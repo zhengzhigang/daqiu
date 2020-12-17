@@ -15,13 +15,9 @@
     </div>
 </template>
 <script lang="ts">
-    import 'swiper/dist/css/swiper.css'
-    import Swiper from 'swiper';
     import { defineComponent } from 'vue'
-    import CountDown from '@/components/CounDown.vue'
-    const countDownProducer = require('../utils/countDown').default
     export default defineComponent({
-        name: 'Home',
+        name: 'ArticleList',
         data() {
             return {
                 articleList: [

@@ -29,22 +29,22 @@
                     <i class="icon"></i>
                     <span class="title">助力高考</span>
                     <count-down showCountDown :countDown="countDown"></count-down>
-                    <router-link class="more-link" to="/rec">更多>></router-link>
+                    <router-link class="more-link" to="/article-list">更多>></router-link>
                 </div>
                 <div class="help-rec">
-                    <div class="help-rec-item">
+                    <div class="help-rec-item" @click="jumpArticle">
                         <div class="help-img">
                             <img src="../assets/img/home/detail01.jpg" alt="">
                         </div>
                         <p class="help-text">艺术生复习问题</p>
                     </div>
-                    <div class="help-rec-item">
+                    <div class="help-rec-item" @click="jumpArticle">
                         <div class="help-img">
                             <img src="../assets/img/home/detail02.jpg" alt="">
                         </div>
                         <p class="help-text">文化课复习学案</p>
                     </div>
-                    <div class="help-rec-item">
+                    <div class="help-rec-item" @click="jumpArticle">
                         <div class="help-img">
                             <img src="../assets/img/home/detail03.jpg" alt="">
                         </div>
@@ -124,6 +124,9 @@
         },
 
         methods: {
+            jumpArticle() {
+                this.$router.push('/article-detales')
+            },
             initCountDown() {
                 const time = new Date('2020-12-31 10:00:00').getTime() / 1000
                 this.timer = countDownProducer(time, (date: any) => {

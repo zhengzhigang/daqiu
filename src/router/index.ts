@@ -14,15 +14,36 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
       },
       {
-        path: 'rec',
-        name: 'Reccommend',
-        component: () => import(/* webpackChunkName: "about" */ '../views/RecInfo.vue')
+        path: 'article-list',
+        name: 'ArticleList',
+        component: () => import(/* webpackChunkName: "about" */ '../views/ArticleList.vue')
       },
       {
         path: 'edu-manage',
         name: 'EduManage',
         component: () => import(/* webpackChunkName: "about" */ '../views/EduManage.vue')
+      },
+      {
+        path: 'about',
+        name: 'About',
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      },
+      {
+        path: 'article-detales',
+        name: 'ArticleDetales',
+        component: () => import(/* webpackChunkName: "about" */ '../views/ArticleDetales.vue')
+      },
+      {
+        path: 'course-list',
+        name: 'CourseList',
+        component: () => import(/* webpackChunkName: "about" */ '../views/CourseList.vue')
+      },
+      {
+        path: 'score-search',
+        name: 'ScoreSearch',
+        component: () => import(/* webpackChunkName: "about" */ '../views/ScoreSearch.vue')
       }
+      
     ]
   }
 ]

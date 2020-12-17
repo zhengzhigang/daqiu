@@ -19,6 +19,7 @@
     right: 0;
     background: #fff;
     z-index: 999;
+    border-bottom: 1px solid #eee;
     &-img {
         display: block;
         width: 100px;
