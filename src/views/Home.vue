@@ -18,6 +18,7 @@
                 class="bean-item"
                 v-for="(item, index) in beanList"
                 :key="index"
+                @click="jumpDetail(item)"
             >
                 <img class="bean-icon" :src="item.img" alt="">
                 <p class="bean-text">{{item.text}}</p>
@@ -84,14 +85,46 @@
                 {img: require('../assets/img/home/Rot03.jpg')}
             ]
             const beanList = [
-                {img: require('../assets/img/home/nav0.png'), text: '学校简介'},
-                {img: require('../assets/img/home/nav1.png'), text: '课程设置'},
-                {img: require('../assets/img/home/nav2.png'), text: '教研活动'},
-                {img: require('../assets/img/home/nav3.png'), text: '专用教材'},
-                {img: require('../assets/img/home/nav4.png'), text: '学校公告'},
-                {img: require('../assets/img/home/nav6.png'), text: '分数查询'},
-                {img: require('../assets/img/home/nav5.png'), text: '许个愿吧'},
-                {img: require('../assets/img/home/nav7.png'), text: '咨询报名'}
+                {
+                    img: require('../assets/img/home/nav0.png'),
+                    text: '学校简介',
+                    link: '/about'
+                },
+                {
+                    img: require('../assets/img/home/nav1.png'),
+                    text: '课程设置',
+                    link: '/edu-manage'
+                },
+                {
+                    img: require('../assets/img/home/nav2.png'),
+                    text: '教研活动',
+                    link: ''
+                },
+                {
+                    img: require('../assets/img/home/nav3.png'),
+                    text: '专用教材',
+                    link: ''
+                },
+                {
+                    img: require('../assets/img/home/nav4.png'),
+                    text: '学校公告',
+                    link: ''
+                },
+                {
+                    img: require('../assets/img/home/nav6.png'),
+                    text: '分数查询',
+                    link: '/score-search'
+                },
+                {
+                    img: require('../assets/img/home/nav5.png'),
+                    text: '许个愿吧',
+                    link: ''
+                },
+                {
+                    img: require('../assets/img/home/nav7.png'),
+                    text: '咨询报名',
+                    link: '/course-list'
+                }
             ]
             return {
                 swiperList,
@@ -124,9 +157,14 @@
         },
 
         methods: {
+            jumpDetail(item: any) {
+                this.$router.push(item.link)
+            },
+
             jumpArticle() {
                 this.$router.push('/article-detales')
             },
+
             initCountDown() {
                 const time = new Date('2020-12-31 10:00:00').getTime() / 1000
                 this.timer = countDownProducer(time, (date: any) => {

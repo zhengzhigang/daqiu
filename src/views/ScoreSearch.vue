@@ -15,13 +15,19 @@
         </div>
         <div class="score-content">
             <div class="score-filter">
-                <div>
+                <div class="left clearfix">
                     <span class="key">选择考试日期</span>
-                    <input class="value" type="date">
+                    <input class="value" type="date" v-model="filterDate" @change="changeDate">
                 </div>
-                <div>
+                <div class="right clearfix">
                     <span class="key">选择班级</span>
-                    <div class="value"></div>
+                    <select class="value" name="choice" v-model="classSelect" @change="getClassSelected">
+                        <option
+                            :value="item.id"
+                            v-for="(item, index) in classList"
+                            :key="index"
+                        >{{item.name}}</option>
+                    </select>
                 </div>
             </div>
             <div class="score-table">
@@ -58,6 +64,14 @@
 
     export default defineComponent({
         name: 'ScoreSearch',
+
+        data() {
+            return {
+                classSelect: 2,
+                filterDate: ''
+            }
+        },
+
         setup() {
             const swiperList = [
                 {img: require('../assets/img/home/Rot01.jpg')}
@@ -76,10 +90,18 @@
                 {number: '011', chinese: 120, math: 130, english: 140, politics: 78, history: 68, geography: 88, score: 550, order: 11},
                 {number: '012', chinese: 120, math: 130, english: 140, politics: 78, history: 68, geography: 88, score: 550, order: 12}
             ]
+
+            const classList = [
+                {id: 1, name: '文科1班'},
+                {id: 2, name: '文科2班'},
+                {id: 3, name: '理科1班'},
+                {id: 4, name: '理科2班'}
+            ]
             return {
                 swiperList,
                 data,
-                column
+                column,
+                classList
             }
         },
 
@@ -99,6 +121,13 @@
         },
 
         methods: {
+            changeDate(e) {
+                console.log('===>>:', e)
+            },
+
+            getClassSelected(e) {
+                console.log('===>>:', e)
+            }
         }
     });
 </script>
@@ -118,8 +147,27 @@
             flex: 1;
         }
         .key {
+            flex: 1;
             font-size: 12px;
             color: #181818;
+        }
+        .value {
+            flex: 1;
+            height: 40px;
+        }
+        .value {
+            width: 60%;
+        }
+        .left, .right {
+            display: flex;
+            align-items: center;
+            width: 50%;
+        }
+        .left {
+            float: left;
+        }
+        .right {
+            float: right;
         }
     }
     &-table {
